@@ -1,22 +1,8 @@
 <!DOCTYPE html>
-
-<html>
 <head>
-
-<style>
-</style>
-
-<script>
-</script>
-
 </head>
-
 <body>
-  <a href="connect.php">Click here
-  </a>
-
-
-$code='<?php
+<? php
   $db = mysqli_connect('127.0.0.1', 'root', '', 'bookstore');
   if(!$db)
   {
@@ -25,10 +11,7 @@ $code='<?php
   }
   echo "success" . PHP_EOL;
 
-  mysqli_close($db);
- ?>';
- echo '<pre>' . htmlspecialchars($code) . '</pre>';
-
-<body>
-
+  myaqli_close($db);
+ ?>
+</body>
 </html>
