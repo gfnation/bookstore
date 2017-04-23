@@ -1,19 +1,19 @@
-var sql = require("mysql");
 
-exports.open_connection_default = function(){
-  var connection = mysql.createConnection({
+function updateBook(isbn, Title, Author, Publisher, Price, Year, BookCat)
+{
+var mysql = require("mysql");
+
+var con = mysql.createConnection({
   host : '127.0.0.1',
-  database : 'bookstore'
+  user: 'root',
+  password: '',
+  database: 'bookstore'
 });
-return connection;
 
-exports.create_cust = function(connection, CustomerID, FirstName, LastName, Email, Address){
-  var query = "INSERT INTO customer (CustomerID, FirstName, LastName, Email. Address)" + "VALUES(?, ?, ?, ?, ?)"
+con.connect();
 
-  connection.query(query, [CustomerID, FirstName, LastName, Email, Address]);
+con.query('INSERT INTO book (ISBN, title, author, publisher, price, year, book_catagory) VALUES (' + isbn + ', ' + Title +', ' + Author+ ', '+ Publisher+ ', '+ Price +', ' + Year +', ' + BookCat+')');
+con.query('SELECT * FROM book');
+
+con.end();
 }
-
-
-create_cust(open_connection_default, 0000, "Nick", "Kroeze", "email@email.com", "24 Myrtle Ave");
-
-document.getElementById("test").innerHTML = create_cust(open_connection_default, 0000, "Nick", "Kroeze", "email@email.com", "24 Myrtle Ave");

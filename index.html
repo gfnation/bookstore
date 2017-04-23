@@ -4,30 +4,40 @@
 <head>
 
 <style>
+
 </style>
 
+<script type="text/javascript" src="db_connection.js"></script>
 <script>
+function update(){
+  var isbn = document.getElementById('isbn').value;
+  var title = document.getElementById('title').value;
+  var author = document.getElementById('author').value;
+  var publisher = document.getElementById('publisher').value;
+  var price = document.getElementById('price').value;
+  var year = document.getElementById('year').value;
+  var category = document.getElementById('category').value;
+  updateBook(isbn, title, author, publisher, price, year, category);
+  document.getElementById('isbn added').write("isbn added");
+}
 </script>
 
 </head>
 
 <body>
-  <a href="connect.php">Click here
-  </a>
+  <form>
+    ISBN:<input type="number" id="isbn"><br>
+    Title:<input type="text" id="title"><br>
+    Author:<input type="text" id="author"><br>
+    Publisher:<input type="text" id="publisher"><br>
+    Price:<input type="number" id="price"><br>
+    Year: <input type="number" id="year"><br>
+    Book Catagory <input type="text" id="category"><br>
+    <br><input type="submit"  value="Submit Book Form" onclick="update()">
+  </form>
 
+  <p id="isbn added"></p>
 
-$code='<?php
-  $db = mysqli_connect('127.0.0.1', 'root', '', 'bookstore');
-  if(!$db)
-  {
-    echo "Error connecting" . PHP_EOL;
-    exit;
-  }
-  echo "success" . PHP_EOL;
-
-  mysqli_close($db);
- ?>';
- echo '<pre>' . htmlspecialchars($code) . '</pre>';
 
 <body>
 
