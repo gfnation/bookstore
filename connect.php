@@ -1,15 +1,15 @@
 <!DOCTYPE html>
+<html>
 <head>
 </head>
 <body>
 <? php
-  $db = mysqli_connect('127.0.0.1', 'root', 'root', 'bookstore');
+  $db = mysqli_connect('127.0.0.1', 'root', '', 'bookstore');
   if(!$db)
   {
-    echo "Error connecting" . PHP_EOL;
-    exit;
+    die("Conection failed");
   }
-  echo "success" . PHP_EOL;
+  echo "Connection Established";
 
   mysqli_close($db);
  ?>

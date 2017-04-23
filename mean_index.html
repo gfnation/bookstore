@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="angular.min.js"></script>
+<script src="ang.js"></script>
+</head>
+<body ng-app="BookApp">
+  <div ng-controller="bookCtrl">
+    <form>
+      ISBN:<input type="number" ng-model="isbn"><br>
+      Title:<input type="text" ng-model="title"><br>
+      Author:<input type="text" ng-model="author"><br>
+      Publisher:<input type="text" ng-model="publisher"><br>
+      Year:<input type="number" ng-model="year"><br>
+      Price:<input type="number" ng-model="price"><br>
+      Category: <input type="text" ng-model="category"><br>
+      <input type="submit" value="Submit Book" ng-click="submit()">
+    </form>
+  </div>
+</body>
+
+</html>

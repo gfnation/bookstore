@@ -7,25 +7,46 @@
 
 </style>
 
-<script type="text/javascript" src="db_connection.js"></script>
 <script>
-function update(){
-  var isbn = document.getElementById('isbn').value;
-  var title = document.getElementById('title').value;
-  var author = document.getElementById('author').value;
-  var publisher = document.getElementById('publisher').value;
-  var price = document.getElementById('price').value;
-  var year = document.getElementById('year').value;
-  var category = document.getElementById('category').value;
-  updateBook(isbn, title, author, publisher, price, year, category);
-  document.getElementById('isbn added').write("isbn added");
+function updateBook(isbn, title, author, publisher, price, year, category)
+{
+  alert(made it here);
+var mysql = require("mysql");
+
+var con = mysql.createConnection({
+  host : '127.0.0.1',
+  user: 'root',
+  password: '',
+  database: 'bookstore'
+});
+
+con.connect();
+
+con.query('INSERT INTO book VALUES(?,?,?,?,?,?,?)', [isbn, author, publisher, price, year, category]);
+//con.query('SELECT * FROM book');
+
+con.end();
 }
+
+function dbtest(){
+  var isbn = document.getElementById("isbn").value;
+  var title = document.getElementById("title").value;
+  var author = document.getElementById("author").value;
+  var publisher = document.getElementById("publisher").value;
+  var price = document.getElementById("price").value;
+  var year = document.getElementById("year").value;
+  var category = document.getElementById("category").value;
+  updateBook(isbn, title, author, publisher, price, year, category);
+}
+
 </script>
 
 </head>
-
+<a href="connect.php">Click here</a>
+<script type="javascript/text" src="angular.min.js"></script>
 <body>
-  <form>
+  <div>
+  <form method="post" action="/">
     ISBN:<input type="number" id="isbn"><br>
     Title:<input type="text" id="title"><br>
     Author:<input type="text" id="author"><br>
@@ -33,11 +54,13 @@ function update(){
     Price:<input type="number" id="price"><br>
     Year: <input type="number" id="year"><br>
     Book Catagory <input type="text" id="category"><br>
-    <br><input type="submit"  value="Submit Book Form" onclick="update()">
+    <br><input type="submit" id="form_button" value="Submit Book Form">
   </form>
-
+</div>
+<div>
   <p id="isbn added"></p>
-
+  <p id="query"></p>
+</div>
 
 <body>
 
